@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - potatoharshifrontend
+name: Build and deploy Node.js app to Azure Web App - potatoharshifrontend2
 
 on:
   push:
@@ -60,4 +60,5 @@ jobs:
           app-name: 'potatoharshifrontend'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0EDB94864A9147B1A7DA157A6A8DC6FA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_FRONTEND2 }}
+         

@@ -11,9 +11,28 @@ const app = express();
 const port = process.env.PORT || 4000;
 
 app.use(express.json());
-// app.use(cors());
+// // app.use(cors());
+// app.use(cors({
+//     origin: process.env.FRONTEND_URL || "http://localhost:5173",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "token"]
+// }));
+
+
+const allowedOrigins = [
+    "https://potatoharshifrontend2.azurewebsites.net",
+    "https://potatoharshiadmin.azurewebsites.net",
+    "http://localhost:5173"
+];
+
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin: (origin, callback) => {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error("Not allowed by CORS"));
+        }
+    },
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "token"]
 }));
